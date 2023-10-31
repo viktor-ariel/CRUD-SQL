@@ -1,0 +1,36 @@
+{% extends 'base.html' %}   
+{% block content %} 
+   <div>
+        <h1>Lista de Itens</h1>
+        <a href="{{url_for('editePersonagem', id=0)}}" class="btn btn-primary"> Adicionar</a>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Casa</th>
+                    <th>Raça</th>
+                    <th>Altura</th>
+                    <th>Nascimento</th>
+                    <th>Imagem</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for id, nome, raca, casa, nascimento, altura, imagem in dados %}
+                <tr>
+                    <td>{{ id }}</td>
+                    <td>{{ nome }}</td>
+                    <td>{{ raca }}</td>
+                    <td>{{ casa }}</td>
+                    <td>{{ nascimento}}</td>
+                    <td>{{ altura }}</td>
+                    <td><img src="{{ imagem }}" alt="thumbnail" class="img-thumbnail"></td>
+                    <td><a href="{{url_for ('editePersonagem', id=id)}}">Editar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
